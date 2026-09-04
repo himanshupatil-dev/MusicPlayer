@@ -1,0 +1,762 @@
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+    font-family: "Inter", sans-serif;
+    background: #000;
+    color: #fff;
+    overflow-x: hidden;
+}
+
+
+/* =========================================================
+   MAIN STAGE
+========================================================= */
+
+.stage {
+    position: relative;
+
+    width: 100%;
+    height: 100svh;
+
+    min-height: 600px;
+
+    overflow: hidden;
+
+    isolation: isolate;
+}
+
+
+/* =========================================================
+   BACKGROUND VIDEO
+========================================================= */
+
+.background-video {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    z-index: -3;
+}
+
+
+/* =========================================================
+   VIDEO OVERLAY
+========================================================= */
+
+.video-overlay {
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.28),
+            rgba(0, 0, 0, 0.08) 40%,
+            rgba(0, 0, 0, 0.65)
+        );
+
+    z-index: -2;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   TRAFFIC / MUSIC INDICATOR
+========================================================= */
+
+.traffic {
+    position: absolute;
+
+    top: 24px;
+    left: 28px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 9px 13px;
+
+    border: 1px solid rgba(255, 255, 255, 0.15);
+
+    border-radius: 999px;
+
+    background:
+        rgba(255, 255, 255, 0.08);
+
+    backdrop-filter: blur(16px);
+
+    -webkit-backdrop-filter: blur(16px);
+
+    color: rgba(255, 255, 255, 0.92);
+
+    font-size: 13px;
+
+    z-index: 10;
+}
+
+
+.traffic__dot {
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #fff;
+
+    box-shadow:
+        0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+
+.traffic__label {
+    font-size: 14px;
+}
+
+
+.traffic__count {
+    font-variant-numeric: tabular-nums;
+
+    opacity: 0.85;
+}
+
+
+/* =========================================================
+   THEME WRAPPER
+========================================================= */
+
+.theme-wrapper {
+    position: absolute;
+
+    top: 24px;
+    right: 28px;
+
+    z-index: 20;
+}
+
+
+/* =========================================================
+   THEME BUTTON
+========================================================= */
+
+.theme-button {
+    border: 1px solid rgba(255, 255, 255, 0.18);
+
+    border-radius: 999px;
+
+    padding: 10px 16px;
+
+    background:
+        rgba(255, 255, 255, 0.08);
+
+    backdrop-filter: blur(16px);
+
+    -webkit-backdrop-filter: blur(16px);
+
+    color: #fff;
+
+    font-family: inherit;
+
+    font-size: 13px;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.theme-button:hover {
+    background:
+        rgba(255, 255, 255, 0.14);
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   THEME MENU
+========================================================= */
+
+.theme-menu {
+    position: absolute;
+
+    top: calc(100% + 10px);
+
+    right: 0;
+
+    min-width: 150px;
+
+    padding: 7px;
+
+    border: 1px solid rgba(255, 255, 255, 0.15);
+
+    border-radius: 16px;
+
+    background:
+        rgba(15, 15, 15, 0.7);
+
+    backdrop-filter: blur(20px);
+
+    -webkit-backdrop-filter: blur(20px);
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+
+.theme-menu ul {
+    list-style: none;
+}
+
+
+.theme-option {
+    width: 100%;
+
+    border: 0;
+
+    border-radius: 10px;
+
+    padding: 10px 12px;
+
+    background: transparent;
+
+    color: rgba(255, 255, 255, 0.8);
+
+    text-align: left;
+
+    font-family: inherit;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+}
+
+
+.theme-option:hover {
+    background:
+        rgba(255, 255, 255, 0.1);
+
+    color: #fff;
+}
+
+
+/* =========================================================
+   MUSIC PLAYER
+========================================================= */
+
+.music-player {
+    position: absolute;
+
+    left: 50%;
+
+    bottom: 25px;
+
+    transform: translateX(-50%);
+
+    width: min(
+        calc(100% - 40px),
+        760px
+    );
+
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        auto;
+
+    gap: 12px 20px;
+
+    padding: 17px 20px;
+
+    border: 1px solid
+        rgba(255, 255, 255, 0.16);
+
+    border-radius: 22px;
+
+    background:
+        rgba(20, 20, 20, 0.32);
+
+    backdrop-filter: blur(22px);
+
+    -webkit-backdrop-filter: blur(22px);
+
+    box-shadow:
+        0 20px 60px
+        rgba(0, 0, 0, 0.28);
+
+    z-index: 15;
+}
+
+
+/* =========================================================
+   SONG INFORMATION
+========================================================= */
+
+.song-information {
+    min-width: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+}
+
+
+.song-title {
+    overflow: hidden;
+
+    white-space: nowrap;
+
+    text-overflow: ellipsis;
+
+    font-size: 14px;
+
+    font-weight: 500;
+}
+
+
+.song-artist {
+    margin-top: 4px;
+
+    overflow: hidden;
+
+    white-space: nowrap;
+
+    text-overflow: ellipsis;
+
+    color:
+        rgba(255, 255, 255, 0.55);
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   PLAYER CONTROLS
+========================================================= */
+
+.player-controls {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+}
+
+
+.control-button,
+.play-button {
+    border: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    cursor: pointer;
+
+    color: #fff;
+
+    font-family: inherit;
+
+    transition:
+        transform 0.15s ease,
+        background 0.2s ease;
+}
+
+
+.control-button {
+    width: 34px;
+    height: 34px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255, 255, 255, 0.08);
+
+    font-size: 13px;
+}
+
+
+.play-button {
+    width: 43px;
+    height: 43px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255, 255, 255, 0.94);
+
+    color: #111;
+
+    font-size: 14px;
+}
+
+
+.control-button:hover,
+.play-button:hover {
+    transform: scale(1.06);
+}
+
+
+.control-button:hover {
+    background:
+        rgba(255, 255, 255, 0.15);
+}
+
+
+/* =========================================================
+   PROGRESS
+========================================================= */
+
+.progress-container {
+    grid-column: 1 / -1;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+}
+
+
+.time {
+    min-width: 32px;
+
+    color:
+        rgba(255, 255, 255, 0.5);
+
+    font-size: 10px;
+
+    font-variant-numeric: tabular-nums;
+}
+
+
+.time:last-child {
+    text-align: right;
+}
+
+
+#progress-bar {
+    flex: 1;
+
+    width: 100%;
+
+    height: 3px;
+
+    appearance: none;
+
+    -webkit-appearance: none;
+
+    border-radius: 999px;
+
+    background:
+        rgba(255, 255, 255, 0.2);
+
+    cursor: pointer;
+}
+
+
+#progress-bar::-webkit-slider-thumb {
+    appearance: none;
+
+    -webkit-appearance: none;
+
+    width: 10px;
+    height: 10px;
+
+    border-radius: 50%;
+
+    background: #fff;
+
+    cursor: pointer;
+}
+
+
+#progress-bar::-moz-range-thumb {
+    width: 10px;
+    height: 10px;
+
+    border: 0;
+
+    border-radius: 50%;
+
+    background: #fff;
+
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   YOUTUBE PLAYER
+========================================================= */
+
+/*
+    IMPORTANT:
+
+    YouTube requires an embedded player viewport
+    of at least 200px × 200px.
+
+    We keep it off-screen rather than using:
+        display: none
+        width: 0
+        height: 0
+
+    because the API still needs a real player viewport.
+*/
+
+.youtube-player {
+    position: fixed;
+
+    width: 320px;
+    height: 200px;
+
+    right: -340px;
+    bottom: 0;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    z-index: 1;
+}
+
+
+/* =========================================================
+   INFO SECTION
+========================================================= */
+
+.info-section {
+    min-height: 70vh;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 100px 24px;
+
+    background:
+        #080808;
+}
+
+
+.info-content {
+    width: min(
+        100%,
+        720px
+    );
+
+    text-align: center;
+}
+
+
+.eyebrow {
+    margin-bottom: 20px;
+
+    color:
+        rgba(255, 255, 255, 0.45);
+
+    font-size: 11px;
+
+    letter-spacing: 0.18em;
+}
+
+
+.info-content h1 {
+    margin-bottom: 24px;
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size:
+        clamp(
+            34px,
+            5vw,
+            58px
+        );
+
+    line-height: 1.1;
+
+    font-weight: 500;
+}
+
+
+.info-content p:not(.eyebrow) {
+    max-width: 600px;
+
+    margin: 0 auto 16px;
+
+    color:
+        rgba(255, 255, 255, 0.58);
+
+    font-size: 15px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .stage {
+        min-height: 650px;
+    }
+
+
+    .traffic {
+        top: 16px;
+        left: 16px;
+    }
+
+
+    .theme-wrapper {
+        top: 16px;
+        right: 16px;
+    }
+
+
+    .music-player {
+        bottom: 15px;
+
+        width:
+            calc(100% - 24px);
+
+        padding: 15px;
+
+        border-radius: 19px;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 520px) {
+
+    .stage {
+        min-height: 620px;
+    }
+
+
+    .theme-button {
+        padding:
+            9px 12px;
+
+        font-size: 12px;
+    }
+
+
+    .traffic {
+        padding:
+            8px 11px;
+
+        font-size: 12px;
+    }
+
+
+    .music-player {
+        grid-template-columns:
+            1fr;
+
+        gap: 13px;
+
+        padding:
+            14px;
+    }
+
+
+    .song-information {
+        padding-right: 5px;
+    }
+
+
+    .player-controls {
+        order: 2;
+    }
+
+
+    .progress-container {
+        order: 3;
+    }
+
+
+    .info-section {
+        padding:
+            80px 20px;
+    }
+
+
+    .info-content h1 {
+        font-size:
+            35px;
+    }
+
+}
+
+
+/* =========================================================
+   LANDSCAPE PHONES
+========================================================= */
+
+@media (
+    max-height: 500px
+) and (
+    orientation: landscape
+) {
+
+    .stage {
+        min-height: 500px;
+    }
+
+
+    .music-player {
+        bottom: 10px;
+
+        padding: 10px 14px;
+    }
+
+
+    .traffic,
+    .theme-wrapper {
+        top: 12px;
+    }
+
+}

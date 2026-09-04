@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Travel Playlist</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- =========================================
+         BACKGROUND VIDEO
+    ========================================== -->
+    <main class="stage">
+
+        <video
+            id="background-video"
+            class="background-video"
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="auto"
+        >
+            <source
+                id="background-video-source"
+                src="assets/videos/travel.mp4"
+                type="video/mp4"
+            >
+        </video>
+
+        <div class="video-overlay"></div>
+
+        <!-- =====================================
+             TOP LEFT TRAFFIC INDICATOR
+        ====================================== -->
+        <div class="traffic" id="traffic">
+            <span class="traffic__dot" aria-hidden="true"></span>
+
+            <span class="traffic__label">🎧</span>
+
+            <span
+                class="traffic__count"
+                id="traffic-count"
+            >
+                124
+            </span>
+        </div>
+
+
+        <!-- =====================================
+             THEME BUTTON
+        ====================================== -->
+        <div class="theme-wrapper">
+
+            <button
+                class="theme-button"
+                id="theme-button"
+                type="button"
+                aria-expanded="false"
+                aria-controls="theme-menu"
+            >
+                Change theme
+            </button>
+
+            <div
+                class="theme-menu"
+                id="theme-menu"
+                hidden
+            >
+                <ul role="menu">
+
+                    <li role="none">
+                        <button
+                            role="menuitem"
+                            class="theme-option"
+                            data-theme="travel"
+                            type="button"
+                        >
+                            Travel
+                        </button>
+                    </li>
+
+                    <li role="none">
+                        <button
+                            role="menuitem"
+                            class="theme-option"
+                            data-theme="highway"
+                            type="button"
+                        >
+                            Study
+                        </button>
+                    </li>
+
+                    <li role="none">
+                        <button
+                            role="menuitem"
+                            class="theme-option"
+                            data-theme="sleep"
+                            type="button"
+                        >
+                            Sleep
+                        </button>
+                    </li>
+
+                </ul>
+            </div>
+
+        </div>
+
+
+        <!-- =====================================
+             BOTTOM MUSIC PLAYER
+        ====================================== -->
+        <section
+            class="music-player"
+            aria-label="Music player"
+        >
+
+            <div class="song-information">
+
+                <div class="song-title" id="song-title">
+                    Finding a song...
+                </div>
+
+                <div class="song-artist" id="song-artist">
+                    YouTube
+                </div>
+
+            </div>
+
+
+            <div class="player-controls">
+
+                <button
+                    class="control-button"
+                    id="previous-button"
+                    type="button"
+                    aria-label="Previous song"
+                >
+                    ⏮
+                </button>
+
+                <button
+                    class="play-button"
+                    id="play-button"
+                    type="button"
+                    aria-label="Play"
+                >
+                    ▶
+                </button>
+
+                <button
+                    class="control-button"
+                    id="next-button"
+                    type="button"
+                    aria-label="Next song"
+                >
+                    ⏭
+                </button>
+
+            </div>
+
+
+            <div class="progress-container">
+
+                <span
+                    class="time"
+                    id="current-time"
+                >
+                    0:00
+                </span>
+
+                <input
+                    type="range"
+                    id="progress-bar"
+                    min="0"
+                    max="100"
+                    value="0"
+                    step="0.1"
+                    aria-label="Song progress"
+                >
+
+                <span
+                    class="time"
+                    id="duration"
+                >
+                    0:00
+                </span>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================================
+         HIDDEN YOUTUBE PLAYER
+         
+         It must still have a valid viewport.
+    ========================================== -->
+    <div
+        id="youtube-player"
+        class="youtube-player"
+    ></div>
+
+
+    <!-- =========================================
+         INFORMATION SECTION
+    ========================================== -->
+    <section class="info-section">
+
+        <div class="info-content">
+
+            <p class="eyebrow">
+                MUSIC FOR THE JOURNEY
+            </p>
+
+            <h1>
+                Every journey needs a soundtrack.
+            </h1>
+
+            <p>
+                Travel Playlist is a simple space for music,
+                movement and memories.
+            </p>
+
+            <p>
+                Whether you're travelling alone, watching the
+                road through a window, or simply escaping for
+                a while — press play and let the journey begin.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================
+         IMPORTANT:
+         script.js MUST load BEFORE the YouTube API.
+         
+         This ensures that
+         onYouTubeIframeAPIReady()
+         already exists when YouTube calls it.
+    ========================================== -->
+
+    <script src="js/script.js"></script>
+
+</body>
+</html>     
